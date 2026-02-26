@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class Fish {
 
-    String[] silueteRight;
-    String[] silueteLeft;
-    String[] skin;
-    Direction direction;
+    protected String[] silueteRight;
+    protected String[] silueteLeft;
+    private String[] skin;
+    private Direction direction;
     
     public Fish(int seed){
         this.direction = Direction.RIGHT;

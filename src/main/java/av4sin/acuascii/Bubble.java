@@ -2,7 +2,7 @@ package av4sin.acuascii;
 
 public class Bubble {
 
-    String bb;
+    private String bb;
     
     public Bubble(int type) throws AcuasciiException{
         if(type == 0){

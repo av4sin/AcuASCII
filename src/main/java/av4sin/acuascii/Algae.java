@@ -2,7 +2,7 @@ package av4sin.acuascii;
 
 public class Algae {
 
-    int height;
+    private int height;
     
     public Algae(int height){
         this.height = height;
