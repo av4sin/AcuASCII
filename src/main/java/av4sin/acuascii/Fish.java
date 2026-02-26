@@ -4,14 +4,32 @@ import java.util.Random;
 
 public class Fish {
 
-    String siluete;
+    String[] silueteRight;
+    String[] silueteLeft;
+    String[] skin;
+    Direction direction;
     
-    public Fish(){
-
+    public Fish(int seed){
+        this.direction = Direction.RIGHT;
+        skin = silueteRight;
+        Random rand = new Random(seed);
+        if(rand.nextInt(2) == 0){
+            changeDirection();
+        }
     }
 
-    public String reverse(){
-        return siluete;
+    private boolean changeDirection(){
+        if(this.direction == Direction.LEFT){
+            this.direction = Direction.RIGHT;
+            skin = silueteRight;
+            return true;
+        } else if(this.direction == Direction.RIGHT){
+            this.direction = Direction.LEFT;
+            skin = silueteLeft;
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public Fish getRandom(int seed) throws AcuasciiException{
@@ -36,8 +54,13 @@ public class Fish {
         return fish;
     }
 
+    @Override
     public String toString(){
-        return siluete;
+        StringBuilder sb = new StringBuilder();
+        for(String line : skin){
+            sb.append(line).append("\n");
+        }
+        return sb.toString();
     }
 
 }

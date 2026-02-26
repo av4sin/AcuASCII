@@ -3,8 +3,8 @@ package av4sin.acuascii;
 public class WhaleFish extends Fish{
 
     public WhaleFish(){
-        this.siluete = " __v_\n" + //
-                        "(____\\/{";
+        super(33); //TODO: change the magic number in order to solve errors
+        silueteLeft = new String[]{" __v_", "(____\\/{"}; 
     }
 
 }
