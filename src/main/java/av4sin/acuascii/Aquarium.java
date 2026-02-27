@@ -1,16 +1,23 @@
 package av4sin.acuascii;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Aquarium {
     
     private int width;
     private int height;
     private char[][] aquarium;
+    private ArrayList<Fish> fishes;
+    private ArrayList<Algae> algaes;
 
     public Aquarium(int width, int height){
         this.width = width;
         this.height = height;
         this.aquarium = new char[this.height][this.width];
         clear();
+        this.fishes = new ArrayList<Fish>();
+        this.algaes = new ArrayList<Algae>();
     }
 
     public boolean changeSize(int width, int height){
@@ -50,6 +57,22 @@ public class Aquarium {
             }
         }
         return true;
+    }
+
+    public void createLife(int seed) throws AcuasciiException{
+        Random rand = new Random(seed);
+        int randomCount = (2*rand.nextInt(100)/7);
+        for(int i=0; i<randomCount;i++){
+            Fish fish = new Fish(seed).getRandom();
+            fishes.add(fish);
+            addElement(rand.nextInt(width-10), rand.nextInt(height-3), fish.toString());
+        }
+        randomCount = (2*rand.nextInt(100)/7);
+        for(int i=0; i<randomCount;i++){
+            Algae algae = new Algae(rand.nextInt(width/4));
+            algaes.add(algae);
+            addElement(rand.nextInt(width-3), rand.nextInt(height-3), algae.toString());
+        }
     }
 
     @Override

@@ -8,11 +8,11 @@ public class Fish {
     protected String[] silueteLeft;
     private String[] skin;
     private Direction direction;
+    private Random rand;
     
     public Fish(int seed){
         this.direction = Direction.RIGHT;
-        skin = silueteRight;
-        Random rand = new Random(seed);
+        rand = new Random(seed);
         if(rand.nextInt(2) == 0){
             changeDirection();
         }
@@ -32,8 +32,7 @@ public class Fish {
         }
     }
 
-    public Fish getRandom(int seed) throws AcuasciiException{
-        Random rand = new Random(seed);
+    public Fish getRandom() throws AcuasciiException{
         int selection = rand.nextInt(3);
         Fish fish;
         switch (selection) {
