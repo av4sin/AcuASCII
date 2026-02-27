@@ -65,13 +65,14 @@ public class Aquarium {
         for(int i=0; i<randomCount;i++){
             Fish fish = new Fish(seed).getRandom();
             fishes.add(fish);
-            addElement(rand.nextInt(width-10), rand.nextInt(height-3), fish.toString());
+            addElement(rand.nextInt(width-10), rand.nextInt(height-2), fish.toString());
         }
         randomCount = (2*rand.nextInt(100)/7);
         for(int i=0; i<randomCount;i++){
-            Algae algae = new Algae(rand.nextInt(width/4));
+            int h = rand.nextInt(height/4)+2;
+            Algae algae = new Algae(h);
             algaes.add(algae);
-            addElement(rand.nextInt(width-3), rand.nextInt(height-3), algae.toString());
+            addElement(rand.nextInt(this.width - 2), this.height - h, algae.toString());
         }
     }
 

@@ -19,43 +19,29 @@ public class Fish {
     }
 
     private boolean changeDirection(){
-        if(this.direction == Direction.LEFT){
-            this.direction = Direction.RIGHT;
-            skin = silueteRight;
-            return true;
-        } else if(this.direction == Direction.RIGHT){
-            this.direction = Direction.LEFT;
-            skin = silueteLeft;
-            return true;
-        } else{
-            return false;
-        }
+        this.direction = (this.direction == Direction.LEFT) ? Direction.RIGHT : Direction.LEFT;
+        return true;
     }
 
     public Fish getRandom() throws AcuasciiException{
         int selection = rand.nextInt(3);
-        Fish fish;
         switch (selection) {
-            case 0:
-                fish = new ClownFish();
-                break;
+            case 0: 
+                return new ClownFish();
+            case 1: 
+                return new WhaleFish();
+            case 2: 
+                return new JellyFish();
             
-            case 1:
-                fish = new WhaleFish();
-                break;
-
-            case 2:
-                fish = new JellyFish();
-                break;
             default:
                 throw new AcuasciiException("The random number generated has been wrong: " + selection);
         }
-        return fish;
     }
 
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
+        skin = (this.direction == Direction.RIGHT) ? silueteRight : silueteLeft;
         for(String line : skin){
             sb.append(line).append("\n");
         }

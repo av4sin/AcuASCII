@@ -12,9 +12,9 @@ public class Algae {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i<height; i++){
             if(i%2==0){
-                sb.append("(");
+                sb.append("(\n");
             } else{
-                sb.append(")");
+                sb.append(")\n");
             }
         }
         return sb.toString();
