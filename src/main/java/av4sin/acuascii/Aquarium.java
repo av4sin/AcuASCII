@@ -8,16 +8,36 @@ public class Aquarium {
     private int width;
     private int height;
     private char[][] aquarium;
-    private ArrayList<Fish> fishes;
-    private ArrayList<Algae> algaes;
+    private ArrayList<PlacedElement<Fish>> fishes;
+    private ArrayList<PlacedElement<Algae>> algaes;
+    private ArrayList<PlacedElement<Bubble>> bubbles;
+    private Random rand;
+    
+
+    private static class PlacedElement<T>{
+        int x, y;
+        int speedX;
+        int speedY;
+        T element;
+
+        PlacedElement(T element, int x, int y, int speedX, int speedY){
+            this.element = element;
+            this.x = x;
+            this.y = y;
+            this.speedX = speedX;
+            this.speedY = speedY;
+        }
+    }
 
     public Aquarium(int width, int height){
         this.width = width;
         this.height = height;
         this.aquarium = new char[this.height][this.width];
         clear();
-        this.fishes = new ArrayList<Fish>();
-        this.algaes = new ArrayList<Algae>();
+        this.fishes = new ArrayList<>();
+        this.algaes = new ArrayList<>();
+        this.bubbles = new ArrayList<>();
+        this.rand = new Random();
     }
 
     public boolean changeSize(int width, int height){
@@ -91,7 +111,7 @@ public class Aquarium {
             }
             sb.append("|\n");
         }
-        for(int i=0; i<this.width; i++){
+        for (int i = 0; i < this.width + 2; i++) {
             sb.append("-");
         }
         return sb.toString();

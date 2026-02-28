@@ -44,6 +44,10 @@ public class Fish {
         return Math.max(silueteLeft.length, silueteRight.length);
     }
 
+    public Direction getDirection(){
+        return this.direction;
+    }
+
     public Fish getRandom() throws AcuasciiException{
         int selection = rand.nextInt(3);
         switch (selection) {
