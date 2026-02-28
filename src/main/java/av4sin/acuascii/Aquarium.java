@@ -61,13 +61,14 @@ public class Aquarium {
 
     public void createLife(int seed) throws AcuasciiException{
         Random rand = new Random(seed);
-        int randomCount = (2*rand.nextInt(100)/7);
+        int randomCount = (2*rand.nextInt(100)/12);
+        Fish fish = new Fish(seed);
         for(int i=0; i<randomCount;i++){
-            Fish fish = new Fish(seed).getRandom();
-            fishes.add(fish);
-            addElement(rand.nextInt(width-10), rand.nextInt(height-2), fish.toString());
+            Fish randomFish = fish.getRandom();
+            fishes.add(randomFish);
+            addElement(rand.nextInt(width-10), rand.nextInt(height-2), randomFish.toString());
         }
-        randomCount = (2*rand.nextInt(100)/7);
+        randomCount = (2*rand.nextInt(100)/12);
         for(int i=0; i<randomCount;i++){
             int h = rand.nextInt(height/4)+2;
             Algae algae = new Algae(h);
